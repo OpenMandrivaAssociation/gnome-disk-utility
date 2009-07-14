@@ -33,7 +33,8 @@ BuildRequires: unique-devel >= %{unique_version}
 BuildRequires: libnotify-devel >= %{libnotify_version}
 BuildRequires: nautilus-devel >= %{nautilus_version}
 BuildRequires: intltool
-Requires: %{name}-libs = %{version}-%{release}
+BuildRequires: gtk-doc
+Requires: %{libnamegtk} >= %{version}-%{release}
 
 %description
 This package contains the Palimpsest disk management application.
