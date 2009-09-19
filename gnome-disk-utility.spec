@@ -3,7 +3,7 @@
 %define gtk2_version              2.17.2
 %define gnome_doc_utils_version   0.3.2
 %define gnome_keyring_version     2.22
-%define devicekit_disks_version   006
+%define devicekit_disks_version   007
 %define unique_version            1.0.4
 %define libnotify_version         0.4.5
 %define nautilus_version          2.26
@@ -15,7 +15,7 @@
 
 Summary: Disk management application
 Name: gnome-disk-utility
-Version: 0.5
+Version: 2.28.0
 Release: %mkrel 1
 License: LGPLv2+
 Group: System/Configuration/Other
