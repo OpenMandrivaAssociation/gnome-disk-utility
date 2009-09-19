@@ -32,6 +32,7 @@ BuildRequires: devicekit-disks-devel >= %{devicekit_disks_version}
 BuildRequires: unique-devel >= %{unique_version}
 BuildRequires: libnotify-devel >= %{libnotify_version}
 BuildRequires: nautilus-devel >= %{nautilus_version}
+BuildRequires: libatasmart-devel
 BuildRequires: intltool
 BuildRequires: gtk-doc
 Requires: %{libnamegtk} >= %{version}-%{release}
