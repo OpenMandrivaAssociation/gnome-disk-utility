@@ -3,7 +3,6 @@
 %define gtk2_version              2.17.2
 %define gnome_doc_utils_version   0.3.2
 %define gnome_keyring_version     2.22
-%define devicekit_disks_version   007
 %define unique_version            1.0.4
 %define libnotify_version         0.4.5
 %define nautilus_version          2.26
@@ -15,21 +14,21 @@
 
 Summary: Disk management application
 Name: gnome-disk-utility
-Version: 2.28.1
+Version: 2.29.90
 Release: %mkrel 1
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: glib2-devel >= %{glib2_version}
 BuildRequires: gtk2-devel >= %{gtk2_version}
 BuildRequires: gnome-doc-utils >= %{gnome_doc_utils_version}
 BuildRequires: desktop-file-utils
-BuildRequires: gnome-keyring-devel >= %{gnome_keyring_version}
-BuildRequires: devicekit-disks-devel >= %{devicekit_disks_version}
+BuildRequires: libgnome-keyring-devel >= %{gnome_keyring_version}
 BuildRequires: unique-devel >= %{unique_version}
+BuildRequires: udisks-devel
 BuildRequires: libnotify-devel >= %{libnotify_version}
 BuildRequires: nautilus-devel >= %{nautilus_version}
 BuildRequires: libatasmart-devel
@@ -55,7 +54,7 @@ RAID, SMART monitoring, etc.
 %package -n %libname
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
-Requires: devicekit-disks >= %{devicekit_disks_version}
+Requires: udisks
 Requires: %name-data >= %version
 
 %description -n %libname
