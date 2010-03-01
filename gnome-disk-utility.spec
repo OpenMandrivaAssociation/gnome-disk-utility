@@ -32,6 +32,7 @@ BuildRequires: udisks-devel
 BuildRequires: libnotify-devel >= %{libnotify_version}
 BuildRequires: nautilus-devel >= %{nautilus_version}
 BuildRequires: libatasmart-devel
+BuildRequires: libavahi-ui-devel
 BuildRequires: intltool
 BuildRequires: gtk-doc
 Requires: %{libnamegtk} >= %{version}-%{release}
