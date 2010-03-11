@@ -15,7 +15,7 @@
 Summary: Disk management application
 Name: gnome-disk-utility
 Version: 2.29.90
-Release: %mkrel 1
+Release: %mkrel 2
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -77,6 +77,7 @@ disk-related widgets for use in GTK+ applications.
 Summary: Development files for gnome-disk-utility-libs
 Group: Development/C
 Requires: %{libnamegtk} = %{version}-%{release}
+Provides: libgdu-devel = %{version}-%{release}
 
 %description -n %develname
 This package contains header files and libraries needed to
