@@ -12,10 +12,10 @@
 %define libnamegtk %mklibname gdu-gtk %major
 %define develname %mklibname -d gdu
 
-Summary: Disk management application
+Summary: Disk management daemon
 Name: gnome-disk-utility
 Version: 2.29.90
-Release: %mkrel 2
+Release: %mkrel 3
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -39,15 +39,15 @@ Requires: %{libnamegtk} >= %{version}-%{release}
 Requires: polkit-agent
 
 %description
-This package contains the Palimpsest disk management application.
-Palimpsest supports partitioning, file system creation, encryption,
-RAID, SMART monitoring, etc.
+This package contains the Gnome Disk Utility daemon. It supports the detection
+and creation of disk volumes.
 
-%package data
-Summary: Translations and icons used by Palimpsest
-Group: System/Libraries
+%package -n palimpsest
+Summary: Disk management application
+Group: System/Configuration/Other
+Requires: %name = %version-%release
 
-%description data
+%description -n palimpsest
 This package contains the Palimpsest disk management application.
 Palimpsest supports partitioning, file system creation, encryption,
 RAID, SMART monitoring, etc.
@@ -56,7 +56,7 @@ RAID, SMART monitoring, etc.
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
 Requires: udisks
-Requires: %name-data >= %version
+Requires: %name >= %version
 
 %description -n %libname
 This package contains libraries that are used by the Palimpsest
@@ -91,15 +91,19 @@ develop applications with gnome-disk-utility-libs.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT %name.lang palimpsest.lang
 %makeinstall_std
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.a
 
-
 %find_lang %{name}
+%find_lang palimpsest --with-gnome
+for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> palimpsest.lang
+done
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -111,20 +115,22 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
 %{_libdir}/nautilus/extensions-2.0/*.so
 %{_libexecdir}/gdu-format-tool
+%{_datadir}/icons/hicolor/*/apps/gdu*.png
+%{_datadir}/icons/hicolor/scalable/apps/gdu*.svg
+%{_datadir}/icons/hicolor/*/apps/nautilus*.png
+%{_datadir}/icons/hicolor/scalable/apps/nautilus*.svg
 
+
+%files -n palimpsest -f palimpsest.lang
+%defattr(-,root,root,-)
 %{_bindir}/palimpsest
 %{_datadir}/applications/palimpsest.desktop
-
-%dir %{_datadir}/gnome/help/palimpsest
-%{_datadir}/gnome/help/palimpsest/*
+%{_datadir}/icons/hicolor/*/apps/palimpsest*.png
+%{_datadir}/icons/hicolor/scalable/apps/palimpsest*.svg
 
 %dir %{_datadir}/omf/palimpsest
-%{_datadir}/omf/palimpsest/*
+%{_datadir}/omf/palimpsest/palimpsest-C.omf
 
-%files data  -f %{name}.lang
-%defattr(-,root,root,-)
-%{_datadir}/icons/hicolor/*/apps/*.png
-%{_datadir}/icons/hicolor/scalable/apps/*.svg
 
 
 %files -n %libname
