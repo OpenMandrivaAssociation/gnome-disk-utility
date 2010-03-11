@@ -88,14 +88,11 @@ develop applications with gnome-disk-utility-libs.
 %build
 %define _disable_ld_no_undefined 1
 %configure2_5x
-make
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-
-# TODO: upstream doesn't ship a HACKING file yet
-#echo " " > HACKING
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
@@ -110,7 +107,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %name.lang
 %defattr(-,root,root,-)
 %doc README AUTHORS NEWS doc/TODO
-#HACKING
 %{_libexecdir}/gdu-notification-daemon
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
 %{_libdir}/nautilus/extensions-2.0/*.so
