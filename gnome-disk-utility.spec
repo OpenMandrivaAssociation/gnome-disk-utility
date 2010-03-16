@@ -14,8 +14,8 @@
 
 Summary: Disk management daemon
 Name: gnome-disk-utility
-Version: 2.29.90
-Release: %mkrel 3
+Version: 2.30.0
+Release: %mkrel 1
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -110,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-,root,root,-)
-%doc README AUTHORS NEWS doc/TODO
+%doc README AUTHORS NEWS 
 %{_libexecdir}/gdu-notification-daemon
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
 %{_libdir}/nautilus/extensions-2.0/*.so
