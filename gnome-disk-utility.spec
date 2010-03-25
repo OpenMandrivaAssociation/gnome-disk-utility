@@ -15,7 +15,7 @@
 Summary: Disk management daemon
 Name: gnome-disk-utility
 Version: 2.30.0
-Release: %mkrel 1
+Release: %mkrel 2
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -37,6 +37,9 @@ BuildRequires: intltool
 BuildRequires: gtk-doc
 Requires: %{libnamegtk} >= %{version}-%{release}
 Requires: polkit-agent
+#gw fix upgrade from 2010.0:
+#https://qa.mandriva.com/show_bug.cgi?id=58371
+Obsoletes: %name-data
 
 %description
 This package contains the Gnome Disk Utility daemon. It supports the detection
