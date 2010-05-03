@@ -20,6 +20,7 @@ License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch0: gnome-disk-utility-2.30.1-utf8.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: glib2-devel >= %{glib2_version}
@@ -87,6 +88,7 @@ This package contains header files and libraries needed to
 develop applications with gnome-disk-utility-libs.
 %prep
 %setup -q
+%apply_patches
 
 %build
 %define _disable_ld_no_undefined 1
