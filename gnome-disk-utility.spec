@@ -14,8 +14,8 @@
 
 Summary: Disk management daemon
 Name: gnome-disk-utility
-Version: 2.30.1
-Release: %mkrel 2
+Version: 2.32.0
+Release: %mkrel 1
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -92,7 +92,7 @@ develop applications with gnome-disk-utility-libs.
 
 %build
 %define _disable_ld_no_undefined 1
-%configure2_5x
+%configure2_5x --enable-gtk-doc
 %make
 
 %install
@@ -161,7 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/gnome-disk-utility/gdu/*
 %dir %{_includedir}/gnome-disk-utility/gdu-gtk
 %{_includedir}/gnome-disk-utility/gdu-gtk/*
-%dir %{_datadir}/gtk-doc/html/gnome-disk-utility
-%{_datadir}/gtk-doc/html/gnome-disk-utility/*
+#%dir %{_datadir}/gtk-doc/html/gnome-disk-utility
+#%{_datadir}/gtk-doc/html/gnome-disk-utility/*
 
 
