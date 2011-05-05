@@ -15,12 +15,13 @@
 Summary: Disk management daemon
 Name: gnome-disk-utility
 Version: 2.32.1
-Release: %mkrel 1
+Release: 2
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch0: gnome-disk-utility-2.30.1-utf8.patch
+Patch1: gnome-disk-utility-2.32.1-fix-underlinking.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
 BuildRequires: glib2-devel >= %{glib2_version}
@@ -85,9 +86,9 @@ develop applications with gnome-disk-utility-libs.
 %prep
 %setup -q
 %apply_patches
+automake -f
 
 %build
-%define _disable_ld_no_undefined 1
 %configure2_5x --enable-gtk-doc
 %make
 
