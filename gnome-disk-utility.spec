@@ -36,7 +36,6 @@ BuildRequires: libatasmart-devel
 BuildRequires: libavahi-ui-devel
 BuildRequires: intltool
 BuildRequires: gtk-doc
-Requires: %{libnamegtk} >= %{version}-%{release}
 Requires: polkit-agent
 #gw fix upgrade from 2010.0:
 #https://qa.mandriva.com/show_bug.cgi?id=58371
@@ -60,7 +59,6 @@ RAID, SMART monitoring, etc.
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
 Requires: udisks
-Requires: %name >= %version
 
 %description -n %libname
 This package contains libraries that are used by the Palimpsest
@@ -70,7 +68,6 @@ contain UI-related code.
 %package -n %libnamegtk
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
-Requires: %{libname} = %{version}-%{release}
 
 %description -n %libnamegtk
 This package contains libraries that are used by the Palimpsest
@@ -80,7 +77,6 @@ disk-related widgets for use in GTK+ applications.
 %package -n %develname
 Summary: Development files for gnome-disk-utility-libs
 Group: Development/C
-Requires: %{libnamegtk} = %{version}-%{release}
 Provides: libgdu-devel = %{version}-%{release}
 
 %description -n %develname
