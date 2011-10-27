@@ -15,7 +15,7 @@
 Summary: Disk management daemon
 Name: gnome-disk-utility
 Version: 2.32.1
-Release: 2
+Release: 3
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
@@ -79,6 +79,8 @@ disk-related widgets for use in GTK+ applications.
 Summary: Development files for gnome-disk-utility-libs
 Group: Development/C
 Provides: libgdu-devel = %{version}-%{release}
+Requires: %libname = %version-%release
+Requires: %libnamegtk = %version-%release
 
 %description -n %develname
 This package contains header files and libraries needed to
