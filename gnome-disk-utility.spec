@@ -95,12 +95,12 @@ automake -f
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT %name.lang palimpsest.lang
+rm -rf %{buildroot} %name.lang palimpsest.lang
 %makeinstall_std
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
-rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.a
+rm -f %{buildroot}%{_libdir}/*.a
+rm -f %{buildroot}%{_libdir}/nautilus/extensions-2.0/*.la
+rm -f %{buildroot}%{_libdir}/nautilus/extensions-2.0/*.a
 
 %find_lang %{name}
 %find_lang palimpsest --with-gnome
@@ -110,7 +110,7 @@ done
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %name.lang
 %defattr(-,root,root,-)
