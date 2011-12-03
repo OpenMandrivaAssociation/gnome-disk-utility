@@ -1,38 +1,29 @@
-%define dbus_glib_version	  0.76
-%define glib2_version             2.16
-%define gtk2_version              2.17.2
-%define gnome_doc_utils_version   0.3.2
-%define gnome_keyring_version     2.22
-%define unique_version            1.0.4
-%define libnotify_version         0.4.5
-%define nautilus_version          2.26
-
 %define major 0
-%define libname %mklibname gdu %major
-%define libnamegtk %mklibname gdu-gtk %major
+%define libname	%mklibname gdu %major
+%define libgtk	%mklibname gdu-gtk %major
 %define develname %mklibname -d gdu
 
 Summary: Disk management daemon
 Name: gnome-disk-utility
 Version: 2.32.1
-Release: 3
+Release: 4
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch0: gnome-disk-utility-2.30.1-utf8.patch
 Patch1: gnome-disk-utility-2.32.1-fix-underlinking.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
-BuildRequires: glib2-devel >= %{glib2_version}
-BuildRequires: gtk2-devel >= %{gtk2_version}
-BuildRequires: gnome-doc-utils >= %{gnome_doc_utils_version}
+
+BuildRequires: dbus-glib-devel >= 0.76
+BuildRequires: glib2-devel >= 2.16
+BuildRequires: gtk2-devel >= 2.17.2
+BuildRequires: gnome-doc-utils >= 0.3.2
 BuildRequires: desktop-file-utils
-BuildRequires: libgnome-keyring-devel >= %{gnome_keyring_version}
-BuildRequires: unique-devel >= %{unique_version}
+BuildRequires: libgnome-keyring-devel >= 2.22
+BuildRequires: unique-devel >= 1.0.4
 BuildRequires: udisks-devel
-BuildRequires: libnotify-devel >= %{libnotify_version}
-BuildRequires: nautilus-devel >= %{nautilus_version}
+BuildRequires: libnotify-devel >= 0.4.5
+BuildRequires: nautilus-devel >= 2.26
 BuildRequires: libatasmart-devel
 BuildRequires: libavahi-ui-devel
 BuildRequires: intltool
@@ -40,7 +31,7 @@ BuildRequires: gtk-doc
 Requires: polkit-agent
 #gw fix upgrade from 2010.0:
 #https://qa.mandriva.com/show_bug.cgi?id=58371
-Obsoletes: %name-data
+Obsoletes: %{name}-data
 
 %description
 This package contains the Gnome Disk Utility daemon. It supports the detection
@@ -49,40 +40,40 @@ and creation of disk volumes.
 %package -n palimpsest
 Summary: Disk management application
 Group: System/Configuration/Other
-Requires: %name = %version-%release
+Requires: %{name} = %{version}-%{release}
 
 %description -n palimpsest
 This package contains the Palimpsest disk management application.
 Palimpsest supports partitioning, file system creation, encryption,
 RAID, SMART monitoring, etc.
 
-%package -n %libname
+%package -n %{libname}
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
 Requires: udisks
 
-%description -n %libname
+%description -n %{libname}
 This package contains libraries that are used by the Palimpsest
 disk management application. The libraries in this package do not
 contain UI-related code.
 
-%package -n %libnamegtk
+%package -n %{libgtk}
 Summary: Shared libraries used by Palimpsest
 Group: System/Libraries
 
-%description -n %libnamegtk
+%description -n %{libgtk}
 This package contains libraries that are used by the Palimpsest
 disk management application. The libraries in this package contain
 disk-related widgets for use in GTK+ applications.
 
-%package -n %develname
+%package -n %{develname}
 Summary: Development files for gnome-disk-utility-libs
 Group: Development/C
 Provides: libgdu-devel = %{version}-%{release}
-Requires: %libname = %version-%release
-Requires: %libnamegtk = %version-%release
+Requires: %{libname} = %{version}-%{release}
+Requires: %{libgtk} = %{version}-%{release}
 
-%description -n %develname
+%description -n %{develname}
 This package contains header files and libraries needed to
 develop applications with gnome-disk-utility-libs.
 %prep
@@ -91,29 +82,24 @@ develop applications with gnome-disk-utility-libs.
 automake -f
 
 %build
-%configure2_5x --enable-gtk-doc
+%configure2_5x \
+	--disable-static \
+	--enable-gtk-doc
+
 %make
 
 %install
-rm -rf %{buildroot} %name.lang palimpsest.lang
+rm -rf %{buildroot} %{name}.lang palimpsest.lang
 %makeinstall_std
-
-rm -f %{buildroot}%{_libdir}/*.a
-rm -f %{buildroot}%{_libdir}/nautilus/extensions-2.0/*.la
-rm -f %{buildroot}%{_libdir}/nautilus/extensions-2.0/*.a
-
+find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 %find_lang %{name}
 %find_lang palimpsest --with-gnome
-for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
-echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> palimpsest.lang
+
+for omf in %{buildroot}%{_datadir}/omf/*/*-??*.omf;do 
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%{buildroot}!!)" >> palimpsest.lang
 done
 
-
-%clean
-rm -rf %{buildroot}
-
-%files -f %name.lang
-%defattr(-,root,root,-)
+%files -f %{name}.lang
 %doc README AUTHORS NEWS 
 %{_libexecdir}/gdu-notification-daemon
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
@@ -124,37 +110,25 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/nautilus*.png
 %{_datadir}/icons/hicolor/scalable/apps/nautilus*.svg
 
-
 %files -n palimpsest -f palimpsest.lang
-%defattr(-,root,root,-)
 %{_bindir}/palimpsest
 %{_datadir}/applications/palimpsest.desktop
 %{_datadir}/icons/hicolor/*/apps/palimpsest*.png
 %{_datadir}/icons/hicolor/scalable/apps/palimpsest*.svg
-
 %dir %{_datadir}/omf/palimpsest
 %{_datadir}/omf/palimpsest/palimpsest-C.omf
 
-
-
-%files -n %libname
-%defattr(-,root,root,-)
+%files -n %{libname}
 %{_libdir}/libgdu.so.%{major}*
 
-
-%files -n %libnamegtk
-%defattr(-,root,root,-)
+%files -n %{libgtk}
 %{_libdir}/libgdu-gtk.so.%{major}*
 
-%files -n %develname
-%defattr(-,root,root,-)
+%files -n %{develname}
 %{_libdir}/libgdu.so
-%{_libdir}/libgdu.la
 %{_libdir}/libgdu-gtk.so
-%{_libdir}/libgdu-gtk.la
 %{_libdir}/pkgconfig/gdu.pc
 %{_libdir}/pkgconfig/gdu-gtk.pc
-
 %dir %{_includedir}/gnome-disk-utility
 %dir %{_includedir}/gnome-disk-utility/gdu
 %{_includedir}/gnome-disk-utility/gdu/*
@@ -162,5 +136,4 @@ rm -rf %{buildroot}
 %{_includedir}/gnome-disk-utility/gdu-gtk/*
 #%dir %{_datadir}/gtk-doc/html/gnome-disk-utility
 #%{_datadir}/gtk-doc/html/gnome-disk-utility/*
-
 
