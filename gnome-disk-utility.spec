@@ -1,3 +1,4 @@
+%define _disable_ld_no_undefined 1
 %define major 0
 %define libname	%mklibname gdu %major
 %define libgtk	%mklibname gdu-gtk %major
@@ -5,32 +6,29 @@
 
 Summary: Disk management daemon
 Name: gnome-disk-utility
-Version: 2.32.1
-Release: 4
+Version: 3.0.2
+Release: 1
 License: LGPLv2+
 Group: System/Configuration/Other
 URL: http://git.gnome.org/cgit/gnome-disk-utility
-Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0: http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 Patch0: gnome-disk-utility-2.30.1-utf8.patch
-Patch1: gnome-disk-utility-2.32.1-fix-underlinking.patch
 
-BuildRequires: dbus-glib-devel >= 0.76
-BuildRequires: glib2-devel >= 2.16
-BuildRequires: gtk2-devel >= 2.17.2
-BuildRequires: gnome-doc-utils >= 0.3.2
-BuildRequires: desktop-file-utils
-BuildRequires: libgnome-keyring-devel >= 2.22
-BuildRequires: unique-devel >= 1.0.4
-BuildRequires: udisks-devel
-BuildRequires: libnotify-devel >= 0.4.5
-BuildRequires: nautilus-devel >= 2.26
-BuildRequires: libatasmart-devel
-BuildRequires: libavahi-ui-devel
-BuildRequires: intltool
-BuildRequires: gtk-doc
+BuildRequires:	intltool
+BuildRequires:	pkgconfig(avahi-ui)
+BuildRequires:	pkgconfig(avahi-ui-gtk3)
+BuildRequires:	pkgconfig(dbus-glib-1) >= 0.74
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	pkgconfig(gnome-keyring-1)
+BuildRequires:	pkgconfig(gtk+-3.0) >= 0.74
+BuildRequires:	pkgconfig(libatasmart)
+BuildRequires:	pkgconfig(libnautilus-extension)
+BuildRequires:	pkgconfig(libnotify)
+BuildRequires:	pkgconfig(udisks)
+BuildRequires:	pkgconfig(unique-3.0) >= 2.90.1
+
 Requires: polkit-agent
-#gw fix upgrade from 2010.0:
-#https://qa.mandriva.com/show_bug.cgi?id=58371
 Obsoletes: %{name}-data
 
 %description
@@ -79,12 +77,10 @@ develop applications with gnome-disk-utility-libs.
 %prep
 %setup -q
 %apply_patches
-automake -f
 
 %build
 %configure2_5x \
-	--disable-static \
-	--enable-gtk-doc
+	--disable-static
 
 %make
 
@@ -103,7 +99,7 @@ done
 %doc README AUTHORS NEWS 
 %{_libexecdir}/gdu-notification-daemon
 %config(noreplace) %{_sysconfdir}/xdg/autostart/gdu-notification-daemon.desktop
-%{_libdir}/nautilus/extensions-2.0/*.so
+%{_libdir}/nautilus/extensions-3.0/*.so
 %{_libexecdir}/gdu-format-tool
 %{_datadir}/icons/hicolor/*/apps/gdu*.png
 %{_datadir}/icons/hicolor/scalable/apps/gdu*.svg
@@ -114,7 +110,6 @@ done
 %{_bindir}/palimpsest
 %{_datadir}/applications/palimpsest.desktop
 %{_datadir}/icons/hicolor/*/apps/palimpsest*.png
-%{_datadir}/icons/hicolor/scalable/apps/palimpsest*.svg
 %dir %{_datadir}/omf/palimpsest
 %{_datadir}/omf/palimpsest/palimpsest-C.omf
 
@@ -134,6 +129,4 @@ done
 %{_includedir}/gnome-disk-utility/gdu/*
 %dir %{_includedir}/gnome-disk-utility/gdu-gtk
 %{_includedir}/gnome-disk-utility/gdu-gtk/*
-#%dir %{_datadir}/gtk-doc/html/gnome-disk-utility
-#%{_datadir}/gtk-doc/html/gnome-disk-utility/*
 
