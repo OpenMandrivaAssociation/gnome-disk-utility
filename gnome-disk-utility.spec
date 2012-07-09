@@ -4,8 +4,8 @@
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
-Version:	3.4.1
-Release:	%mkrel 1
+Version:	3.5.2
+Release:	1
 License:	LGPLv2+
 Group:		System/Configuration/Other
 URL:		http://git.gnome.org/cgit/gnome-disk-utility
@@ -13,6 +13,8 @@ Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
 BuildRequires:	pkgconfig(udisks2) >= 1.90
+BuildRequires:	pkgconfig(gnome-keyring-1)
+BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
@@ -39,7 +41,7 @@ RAID, SMART monitoring, etc.
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README AUTHORS NEWS 
+%doc README AUTHORS NEWS
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/palimpsest.desktop
