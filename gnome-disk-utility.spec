@@ -15,12 +15,13 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
 BuildRequires:	pkgconfig(udisks2) >= 1.90
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(pwquality)
+BuildRequires:	pkgconfig(libsystemd-login) >= 186
 BuildRequires:	gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
 Requires:	polkit-agent
 Requires:	udisks2 >= 1.90
-Obsoletes:	palimpsest < 3.0.0
+%rename	palimpsest
 
 %description
 This package contains the Palimpsest disk management application.
@@ -44,5 +45,3 @@ RAID, SMART monitoring, etc.
 %doc README AUTHORS NEWS
 %{_bindir}/*
 %{_datadir}/%{name}
-%{_datadir}/applications/palimpsest.desktop
-%{_datadir}/icons/hicolor/*/apps/palimpsest.*
