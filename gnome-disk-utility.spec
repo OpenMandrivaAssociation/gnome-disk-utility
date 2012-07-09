@@ -45,3 +45,6 @@ RAID, SMART monitoring, etc.
 %doc README AUTHORS NEWS
 %{_bindir}/*
 %{_datadir}/%{name}
+%{_datadir}/applications/*.desktop
+%{_iconsdir}/hicolor/*/apps/*.png
+%{_mandir}/man1/gnome*1.*
