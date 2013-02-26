@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(udisks2) >= 1.90
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(libsystemd-login) >= 186
+BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:	gnome-doc-utils
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
