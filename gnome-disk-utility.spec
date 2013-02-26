@@ -48,4 +48,6 @@ RAID, SMART monitoring, etc.
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
+%{_iconsdir}/hicolor/*/apps/*.svg
+%{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_mandir}/man1/gnome*1.*
