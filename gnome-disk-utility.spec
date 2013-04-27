@@ -1,5 +1,4 @@
 %define Werror_cflags %nil
-
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
 Summary:	Disk management daemon
@@ -8,21 +7,22 @@ Version:	3.6.1
 Release:	2
 License:	LGPLv2+
 Group:		System/Configuration/Other
-URL:		http://git.gnome.org/cgit/gnome-disk-utility
-Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
-BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
-BuildRequires:	pkgconfig(udisks2) >= 1.90
-BuildRequires:	pkgconfig(gnome-keyring-1)
-BuildRequires:	pkgconfig(pwquality)
-BuildRequires:	pkgconfig(libsystemd-login) >= 186
-BuildRequires:	pkgconfig(libsecret-1)
-BuildRequires:	gnome-doc-utils
-BuildRequires:	intltool
+Url:		http://git.gnome.org/cgit/gnome-disk-utility
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+
 BuildRequires:	gtk-doc
+BuildRequires:	intltool
+BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	pkgconfig(gnome-keyring-1)
+BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
+BuildRequires:	pkgconfig(libsecret-1)
+BuildRequires:	pkgconfig(libsystemd-login) >= 186
+BuildRequires:	pkgconfig(pwquality)
+BuildRequires:	pkgconfig(udisks2) >= 1.90
 Requires:	polkit-agent
 Requires:	udisks2 >= 1.90
-%rename	palimpsest
+%rename		palimpsest
 
 %description
 This package contains the Palimpsest disk management application.
@@ -51,3 +51,4 @@ RAID, SMART monitoring, etc.
 %{_iconsdir}/hicolor/*/apps/*.svg
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_mandir}/man1/gnome*1.*
+
