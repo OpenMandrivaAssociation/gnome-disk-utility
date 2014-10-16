@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:	pkgconfig(libsystemd-login) >= 186
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(udisks2) >= 1.90
+BuildRequires:	pkgconfig(libcanberra-gtk3)
 Requires:	polkit-agent
 Requires:	udisks2 >= 1.90
 %rename		palimpsest
