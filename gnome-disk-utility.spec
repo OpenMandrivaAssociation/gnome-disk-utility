@@ -1,10 +1,11 @@
 %define Werror_cflags %nil
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
+%define _disable_ld_no_undefined 1
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
-Version:	3.6.1
-Release:	8
+Version:	3.12.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Configuration/Other
 Url:		http://git.gnome.org/cgit/gnome-disk-utility
@@ -45,10 +46,12 @@ RAID, SMART monitoring, etc.
 %files -f %{name}.lang
 %doc README AUTHORS NEWS
 %{_bindir}/*
-%{_datadir}/%{name}
+%{_libdir}/gnome-settings-daemon-3.0/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_iconsdir}/hicolor/*/apps/*.svg
+%{_iconsdir}/HighContrast/*/apps/*.png
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
 %{_mandir}/man1/gnome*1.*
 
