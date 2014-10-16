@@ -16,6 +16,7 @@ BuildRequires:	intltool
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
+BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
 BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:	pkgconfig(libsystemd-login) >= 186
@@ -23,6 +24,9 @@ BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(udisks2) >= 1.90
 BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(dvdread)
+BuildRequires:	pkgconfig(liblzma)
+BuildRequires:	pkgconfig(libnotify)
+
 Requires:	polkit-agent
 Requires:	udisks2 >= 1.90
 %rename		palimpsest
@@ -36,8 +40,8 @@ RAID, SMART monitoring, etc.
 %setup -q
 
 %build
-%configure2_5x \
-        --disable-static
+%configure
+
 %make
 
 %install
