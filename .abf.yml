@@ -3,5 +3,6 @@ removed_sources:
   gnome-disk-utility-3.16.0.tar.xz: 6bde43c275944e2657552466d9bb646169486985
   gnome-disk-utility-3.18.1.tar.xz: b83ff8e3634f19c4cb9a05e4fb8da44a86e0754e
   gnome-disk-utility-3.6.1.tar.xz: 90ad42c4c78a944533012ad49df61e84c676e88c
-sources:
   gnome-disk-utility-3.18.3.1.tar.xz: a9ef11482eeb6a057ecf3e2a3319075d0a2cf23b
+sources:
+  gnome-disk-utility-3.30.1.tar.xz: 605579deaf0f76457d9b92cd8961b529e6259c1a
