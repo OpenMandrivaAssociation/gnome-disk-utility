@@ -5,7 +5,7 @@
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
-Version:	3.18.3.1
+Version:	3.30.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Configuration/Other
@@ -28,6 +28,11 @@ BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(dvdread)
 BuildRequires:	pkgconfig(liblzma)
 BuildRequires:	pkgconfig(libnotify)
+BuildRequires:	desktop-file-utils
+BuildRequires:	gettext-devel
+BuildRequires:	gnome-common
+BuildRequires:	meson
+BuildRequires:	locales
 
 Requires:	polkit-agent
 Requires:	udisks2 >= 1.90
@@ -41,13 +46,20 @@ RAID, SMART monitoring, etc.
 %prep
 %setup -q
 
-%build
-%configure
-
-%make
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+export LANG=UTF-8
+%meson_install
+
+#fix desktop files
+desktop-file-install \
+	--dir=%{buildroot}%{_datadir}/applications \
+		%{buildroot}%{_datadir}/applications/*.desktop
+
+#we don't want these
+find %{buildroot} -name "*.la" -delete
 
 %find_lang %{name}
 
