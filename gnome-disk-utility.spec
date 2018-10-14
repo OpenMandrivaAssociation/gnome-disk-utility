@@ -65,13 +65,13 @@ find %{buildroot} -name "*.la" -delete
 %files -f %{name}.lang
 %doc README AUTHORS NEWS
 %{_bindir}/*
-%{_libdir}/gnome-settings-daemon-3.0/*
+#{_libdir}/gnome-settings-daemon-3.0/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_iconsdir}/hicolor/*/apps/*.svg
-%{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
+#{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
+#{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
 %{_mandir}/man1/gnome*1.*
 
