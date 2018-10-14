@@ -20,8 +20,7 @@ BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gnome-settings-daemon)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
 BuildRequires:	pkgconfig(libsecret-1)
-BuildRequires:	pkgconfig(libsystemd)
-BuildRequires:	pkgconfig(libsystemd-login) >= 186
+BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(udisks2) >= 1.90
 BuildRequires:	pkgconfig(libcanberra-gtk3)
