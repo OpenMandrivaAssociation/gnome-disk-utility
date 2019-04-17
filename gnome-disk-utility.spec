@@ -5,8 +5,8 @@
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
-Version:	3.30.2
-Release:	2
+Version:	3.32.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Configuration/Other
 Url:		http://git.gnome.org/cgit/gnome-disk-utility
