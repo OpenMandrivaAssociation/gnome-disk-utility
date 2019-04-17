@@ -67,8 +67,7 @@ find %{buildroot} -name "*.la" -delete
 %{_bindir}/*
 #{_libdir}/gnome-settings-daemon-3.0/*
 %{_datadir}/applications/*.desktop
-%{_iconsdir}/hicolor/*/apps/*.png
-%{_iconsdir}/hicolor/*/apps/*.svg
+%{_iconsdir}/hicolor/*/apps/*
 #{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
