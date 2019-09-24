@@ -63,7 +63,7 @@ find %{buildroot} -name "*.la" -delete
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README AUTHORS NEWS
+%doc README.md AUTHORS NEWS
 %{_bindir}/*
 #{_libdir}/gnome-settings-daemon-3.0/*
 %{_datadir}/applications/*.desktop
