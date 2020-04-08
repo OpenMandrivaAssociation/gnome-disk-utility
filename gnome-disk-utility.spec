@@ -6,7 +6,7 @@
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
 Version:	3.36.1
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Configuration/Other
 Url:		http://git.gnome.org/cgit/gnome-disk-utility
@@ -76,5 +76,3 @@ find %{buildroot} -name "*.la" -delete
 %{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
 %{_libexecdir}/gsd-disk-utility-notify
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
-
-
