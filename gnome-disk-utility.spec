@@ -12,6 +12,7 @@ Group:		System/Configuration/Other
 Url:		http://git.gnome.org/cgit/gnome-disk-utility
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	cmake
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
@@ -24,6 +25,7 @@ BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(udisks2) >= 1.90
 BuildRequires:	pkgconfig(libcanberra-gtk3)
+BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(dvdread)
 BuildRequires:	pkgconfig(liblzma)
 BuildRequires:	pkgconfig(libnotify)
