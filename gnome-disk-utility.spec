@@ -2,6 +2,7 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
+%define _empty_manifest_terminate_build 0
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
