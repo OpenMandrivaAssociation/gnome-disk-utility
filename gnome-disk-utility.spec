@@ -3,7 +3,7 @@
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
 %global debug_package %{nil}
-%define _empty_manifest_terminate_build 0
+#define _empty_manifest_terminate_build 0
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
