@@ -1,9 +1,4 @@
-%define Werror_cflags %nil
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
-%define _disable_ld_no_undefined 1
-%define _disable_rebuild_configure 1
-%global debug_package %{nil}
-#define _empty_manifest_terminate_build 0
 
 Summary:	Disk management daemon
 Name:		gnome-disk-utility
@@ -47,9 +42,10 @@ Palimpsest supports partitioning, file system creation, encryption,
 RAID, SMART monitoring, etc.
 
 %prep
-%setup -q
-
+%autosetup -p1
 %meson
+
+%build
 %meson_build
 
 %install
@@ -60,9 +56,6 @@ export LANG=UTF-8
 desktop-file-install \
 	--dir=%{buildroot}%{_datadir}/applications \
 		%{buildroot}%{_datadir}/applications/*.desktop
-
-#we don't want these
-find %{buildroot} -name "*.la" -delete
 
 %find_lang %{name}
 
