@@ -10,6 +10,8 @@ Url:		http://git.gnome.org/cgit/gnome-disk-utility
 Source0:	https://download.gnome.org/sources/gnome-disk-utility/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	cmake
+BuildRequires:	gtk4
+BuildRequires:	gtk-update-icon-cache
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
