@@ -70,6 +70,7 @@ desktop-file-install \
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 %{_mandir}/man1/gnome*1.*
-#{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
-#{_libexecdir}/gsd-disk-utility-notify
-#{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+%{_prefix}/lib/systemd/user/gnome-disk-utility-notify.service
+%{_libdir}/gnome_disks/libgnome_disks.so
+%{_libexecdir}/gnome-disk-utility-notify
+%{_datadir}/metainfo/org.gnome.DiskUtility.metainfo.xml
