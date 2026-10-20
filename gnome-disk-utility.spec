@@ -10,7 +10,7 @@ Url:		https://gitlab.gnome.org/GNOME/gnome-disk-utility
 Source0:	https://download.gnome.org/sources/gnome-disk-utility/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	cmake
-BuildRequires:	rust
+BuildRequires:	rust cargo
 BuildRequires:	gtk-update-icon-cache
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
