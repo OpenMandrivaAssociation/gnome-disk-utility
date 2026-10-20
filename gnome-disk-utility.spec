@@ -65,14 +65,11 @@ desktop-file-install \
 %files -f %{name}.lang
 %doc README.md AUTHORS NEWS
 %{_bindir}/*
-#{_libdir}/gnome-settings-daemon-3.0/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*/apps/*
-#{_datadir}/appdata/org.gnome.DiskUtility.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Disks.gschema.xml
-#{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.plugins.gdu-sd.gschema.xml
 %{_mandir}/man1/gnome*1.*
-%{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
-%{_libexecdir}/gsd-disk-utility-notify
-%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+#{_datadir}/metainfo/org.gnome.DiskUtility.appdata.xml
+#{_libexecdir}/gsd-disk-utility-notify
+#{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
