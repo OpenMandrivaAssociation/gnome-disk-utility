@@ -6,11 +6,11 @@ Version:	51.beta
 Release:	1
 License:	LGPLv2+
 Group:		System/Configuration/Other
-Url:		https://git.gnome.org/cgit/gnome-disk-utility
+Url:		https://gitlab.gnome.org/GNOME/gnome-disk-utility
 Source0:	https://download.gnome.org/sources/gnome-disk-utility/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	cmake
-BuildRequires:	gtk4
+BuildRequires:	rust
 BuildRequires:	gtk-update-icon-cache
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -18,8 +18,8 @@ BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gnome-settings-daemon)
-BuildRequires:	pkgconfig(gtk+-3.0) >= 3.3.0
-BuildRequires:	pkgconfig(libsecret-1)
+BuildRequires:	pkgconfig(gtk4)
+BuildRequires:	pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(pwquality)
 BuildRequires:	pkgconfig(udisks2) >= 1.90
