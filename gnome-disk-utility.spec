@@ -14,6 +14,7 @@ BuildRequires:	rust cargo
 BuildRequires:	gtk-update-icon-cache
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
+BuildRequires:	pkgconfig(blueprint-compiler)
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
